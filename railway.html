@@ -1,1 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Railway Mission — ExamJunction</title>
 
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+  background:#070b14;
+  color:#f8fafc;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:92%;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* NAV */
+nav{
+  border-bottom:1px solid #172033;
+  background:#070b14;
+}
+
+.nav{
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#5eead4;
+}
+
+.back{
+  color:#94a3b8;
+  font-size:14px;
+}
+
+.back:hover{
+  color:#5eead4;
+}
+
+/* HERO */
+.hero{
+  padding:65px 0 45px;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 13px;
+  border-radius:30px;
+  border:1px solid #21434a;
+  color:#5eead4;
+  background:#0c1820;
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:clamp(40px,7vw,65px);
+  line-height:1.05;
+  letter-spacing:-2px;
+}
+
+h1 span{
+  color:#5eead4;
+}
+
+.hero p{
+  max-width:650px;
+  color:#94a3b8;
+  margin-top:18px;
+  font-size:16px;
+}
+
+/* TARGET */
+.target{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:30px;
+}
+
+.target-card{
+  padding:25px;
+  border-radius:17px;
+  border:1px solid #202d40;
+  background:#0b111d;
+}
+
+.target-card:hover{
+  border-color:#5eead4;
+}
+
+.target-icon{
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.target-card h2{
+  margin-bottom:7px;
+}
+
+.target-card p{
+  color:#7f8da3;
+  font-size:14px;
+}
+
+/* SUBJECTS */
+section{
+  padding:60px 0;
+}
+
+.title{
+  margin-bottom:25px;
+}
+
+.title small{
+  color:#5eead4;
+  letter-spacing:2px;
+  font-size:11px;
+}
+
+.title h2{
+  font-size:30px;
+  margin-top:5px;
+}
+
+.title p{
+  color:#7f8da3;
+}
+
+.subjects{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.subject{
+  background:#0b111d;
+  border:1px solid #1b2739;
+  border-radius:15px;
+  padding:22px;
+  transition:.2s;
+}
+
+.subject:hover{
+  transform:translateY(-3px);
+  border-color:#5eead4;
+}
+
+.subject-icon{
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.subject h3{
+  margin-bottom:6px;
+}
+
+.subject p{
+  color:#7f8da3;
+  font-size:13px;
+}
+
+/* RESOURCES */
+.resources{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.resource{
+  background:linear-gradient(145deg,#0d1522,#090f19);
+  border:1px solid #1d2b3e;
+  padding:23px;
+  border-radius:15px;
+}
+
+.resource h3{
+  margin-bottom:7px;
+}
+
+.resource p{
+  color:#7f8da3;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.open{
+  display:inline-block;
+  color:#5eead4;
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* ROADMAP */
+.roadmap{
+  border-left:2px solid #203442;
+  padding-left:22px;
+}
+
+.step{
+  position:relative;
+  margin-bottom:25px;
+}
+
+.step:before{
+  content:"";
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:#5eead4;
+  border-radius:50%;
+  left:-29px;
+  top:5px;
+}
+
+.step h3{
+  margin-bottom:4px;
+}
+
+.step p{
+  color:#7f8da3;
+  font-size:13px;
+}
+
+/* CTA */
+.cta{
+  text-align:center;
+  padding:70px 20px;
+  background:radial-gradient(circle,#10252b,#070b14 65%);
+}
+
+.cta h2{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.cta p{
+  color:#7f8da3;
+  margin-bottom:22px;
+}
+
+.btn{
+  display:inline-block;
+  background:#5eead4;
+  color:#061014;
+  padding:13px 20px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid #172033;
+  padding:25px 0;
+  color:#66758b;
+  font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+
+  .target{
+    grid-template-columns:1fr;
+  }
+
+  .subjects{
+    grid-template-columns:1fr;
+  }
+
+  .resources{
+    grid-template-columns:1fr;
+  }
+
+  h1{
+    font-size:42px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      Exam<span>Junction</span>
+    </a>
+
+    <a href="index.html" class="back">
+      ← Back to Home
+    </a>
+  </div>
+</nav>
+
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+
+    <div class="badge">🚆 RAILWAY MISSION</div>
+
+    <h1>
+      Crack Railway.<br>
+      <span>Complete the Mission.</span>
+    </h1>
+
+    <p>
+      Railway NTPC, Group D aur other Railway exams ke liye
+      structured preparation ek hi jagah.
+    </p>
+
+    <div class="target">
+
+      <a href="#ntpc" class="target-card">
+        <div class="target-icon">🚆</div>
+        <h2>Railway NTPC</h2>
+        <p>
+          Maths, Reasoning, General Awareness aur
+          Current Affairs preparation.
+        </p>
+      </a>
+
+      <a href="#groupd" class="target-card">
+        <div class="target-icon">🛤️</div>
+        <h2>Railway Group D</h2>
+        <p>
+          Basic concepts se systematic Railway preparation.
+        </p>
+      </a>
+
+    </div>
+
+  </div>
+</header>
+
+
+<!-- SUBJECTS -->
+<section id="ntpc">
+  <div class="container">
+
+    <div class="title">
+      <small>CORE PREPARATION</small>
+      <h2>📚 Railway Subjects</h2>
+      <p>Apni preparation subject-wise organise karo.</p>
+    </div>
+
+    <div class="subjects">
+
+      <div class="subject">
+        <div class="subject-icon">📐</div>
+        <h3>Mathematics</h3>
+        <p>
+          Number System, Percentage, Ratio,
+          Profit & Loss, Time & Work etc.
+        </p>
+      </div>
+
+      <div class="subject">
+        <div class="subject-icon">🧠</div>
+        <h3>Reasoning</h3>
+        <p>
+          Series, Coding-Decoding, Analogy,
+          Classification aur logical concepts.
+        </p>
+      </div>
+
+      <div class="subject">
+        <div class="subject-icon">🌍</div>
+        <h3>General Studies</h3>
+        <p>
+          History, Geography, Polity,
+          Economy aur General Knowledge.
+        </p>
+      </div>
+
+      <div class="subject">
+        <div class="subject-icon">🔬</div>
+        <h3>General Science</h3>
+        <p>
+          Physics, Chemistry aur Biology
+          ke important concepts.
+        </p>
+      </div>
+
+      <div class="subject">
+        <div class="subject-icon">📰</div>
+        <h3>Current Affairs</h3>
+        <p>
+          Important national aur international
+          current events.
+        </p>
+      </div>
+
+      <div class="subject">
+        <div class="subject-icon">📖</div>
+        <h3>Study Material</h3>
+        <p>
+          Chapter-wise notes aur preparation
+          resources.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- RESOURCES -->
+<section id="groupd">
+  <div class="container">
+
+    <div class="title">
+      <small>LEARNING RESOURCES</small>
+      <h2>🎓 Railway Learning Hub</h2>
+      <p>Preparation ke important resources.</p>
+    </div>
+
+    <div class="resources">
+
+      <div class="resource">
+        <h3>🎥 Railway Classes</h3>
+        <p>
+          Railway subjects ke structured video classes.
+        </p>
+        <a href="#" class="open">Explore Classes →</a>
+      </div>
+
+      <div class="resource">
+        <h3>📖 Railway Notes</h3>
+        <p>
+          Revision ke liye chapter-wise notes.
+        </p>
+        <a href="#" class="open">Open Notes →</a>
+      </div>
+
+      <div class="resource">
+        <h3>📰 Current Affairs</h3>
+        <p>
+          Railway exam-oriented important updates.
+        </p>
+        <a href="#" class="open">Read Updates →</a>
+      </div>
+
+      <div class="resource">
+        <h3>📚 Study Material</h3>
+        <p>
+          Subject-wise learning material.
+        </p>
+        <a href="#" class="open">View Material →</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ROADMAP -->
+<section>
+  <div class="container">
+
+    <div class="title">
+      <small>PREPARATION SYSTEM</small>
+      <h2>🗺️ Railway Roadmap</h2>
+      <p>Zero se preparation ko step-by-step build karo.</p>
+    </div>
+
+    <div class="roadmap">
+
+      <div class="step">
+        <h3>01 — Basic Concepts</h3>
+        <p>
+          Sabhi subjects ke basic concepts clear karo.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>02 — Chapter Learning</h3>
+        <p>
+          Topic-wise classes aur notes complete karo.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>03 — Revision</h3>
+        <p>
+          Short notes aur important concepts revise karo.
+        </p>
+      </div>
+
+      <div class="step">
+        <h3>04 — Exam Preparation</h3>
+        <p>
+          Syllabus completion ke baad exam-focused preparation karo.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+
+    <h2>Railway Is Your Mission.</h2>
+
+    <p>
+      Aaj se preparation ko organised way mein start karo.
+    </p>
+
+    <a href="index.html" class="btn">
+      ← Back to ExamJunction
+    </a>
+
+  </div>
+</section>
+
+
+<footer>
+  <div class="container">
+    © 2026 <b>ExamJunction</b> — Your Exam. Your Mission.
+  </div>
+</footer>
+
+</body>
+  </html>
