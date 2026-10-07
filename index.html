@@ -1,1 +1,826 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ExamJunction — Your Exam Has A Destination</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#050511;
+color:#fff;
+overflow-x:hidden;
+}
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(circle,#ffffff55 1px,transparent 1px),
+radial-gradient(circle,#8b5cf655 1px,transparent 1px);
+background-size:90px 90px,140px 140px;
+background-position:10px 20px,50px 80px;
+opacity:.35;
+pointer-events:none;
+}
+
+a{text-decoration:none;color:inherit}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+/* NAV */
+
+nav{
+height:75px;
+display:flex;
+align-items:center;
+border-bottom:1px solid #ffffff12;
+background:#050511aa;
+backdrop-filter:blur(15px);
+position:relative;
+z-index:10;
+}
+
+.navbox{
+width:90%;
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-size:23px;
+font-weight:900;
+letter-spacing:-1px;
+}
+
+.logo b{
+color:#9b7cff;
+}
+
+.navlinks{
+display:flex;
+gap:28px;
+color:#9999ad;
+font-size:14px;
+}
+
+.navlinks a:hover{
+color:white;
+}
+
+.navbtn{
+border:1px solid #ffffff20;
+padding:9px 15px;
+border-radius:10px;
+}
+
+/* HERO */
+
+.hero{
+min-height:650px;
+display:flex;
+align-items:center;
+position:relative;
+}
+
+.hero-content{
+max-width:760px;
+padding:90px 0;
+}
+
+.tag{
+display:inline-block;
+border:1px solid #8b5cf655;
+background:#8b5cf610;
+color:#bca9ff;
+padding:8px 14px;
+border-radius:30px;
+font-size:12px;
+margin-bottom:25px;
+}
+
+h1{
+font-size:clamp(48px,8vw,92px);
+line-height:.95;
+letter-spacing:-5px;
+max-width:800px;
+}
+
+.gradient{
+background:linear-gradient(90deg,#fff,#9b7cff,#55e8ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero-text{
+color:#9292a8;
+font-size:18px;
+line-height:1.7;
+max-width:610px;
+margin:25px 0;
+}
+
+.hero-buttons{
+display:flex;
+gap:12px;
+}
+
+.btn{
+padding:14px 21px;
+border-radius:12px;
+font-weight:bold;
+font-size:14px;
+}
+
+.mainbtn{
+background:#fff;
+color:#08080f;
+}
+
+.darkbtn{
+border:1px solid #ffffff20;
+background:#ffffff08;
+}
+
+/* ORBIT */
+
+.orbit-area{
+position:absolute;
+right:-80px;
+top:80px;
+width:480px;
+height:480px;
+opacity:.9;
+}
+
+.orbit{
+position:absolute;
+inset:20px;
+border:1px solid #ffffff18;
+border-radius:50%;
+animation:rotate 20s linear infinite;
+}
+
+.orbit.two{
+inset:80px;
+animation-duration:14s;
+animation-direction:reverse;
+}
+
+.orbit.three{
+inset:140px;
+animation-duration:9s;
+}
+
+@keyframes rotate{
+to{transform:rotate(360deg)}
+}
+
+.planet{
+position:absolute;
+width:90px;
+height:90px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+background:#15152a;
+border:1px solid #ffffff25;
+box-shadow:0 0 50px #8b5cf633;
+}
+
+.p1{top:0;left:45%}
+.p2{right:0;top:42%}
+.p3{bottom:0;left:40%}
+.p4{left:0;top:40%}
+
+.center{
+position:absolute;
+left:50%;
+top:50%;
+transform:translate(-50%,-50%);
+width:150px;
+height:150px;
+border-radius:50%;
+background:#111125;
+border:1px solid #8b5cf655;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+box-shadow:0 0 80px #8b5cf633;
+}
+
+.center strong{
+font-size:28px;
+}
+
+.center small{
+color:#85859b;
+margin-top:5px;
+}
+
+/* DESTINATION */
+
+.destination{
+padding:80px 0;
+}
+
+.heading{
+margin-bottom:35px;
+}
+
+.heading small{
+color:#8f7cff;
+text-transform:uppercase;
+letter-spacing:2px;
+}
+
+.heading h2{
+font-size:42px;
+margin-top:8px;
+letter-spacing:-2px;
+}
+
+.heading p{
+color:#818196;
+margin-top:8px;
+}
+
+.exam-worlds{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.world{
+height:260px;
+padding:24px;
+border:1px solid #ffffff12;
+border-radius:22px;
+background:linear-gradient(145deg,#111122,#080811);
+position:relative;
+overflow:hidden;
+transition:.3s;
+}
+
+.world:hover{
+transform:translateY(-8px);
+border-color:#8b5cf655;
+box-shadow:0 20px 60px #000;
+}
+
+.world:after{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+border-radius:50%;
+right:-70px;
+bottom:-70px;
+background:#8b5cf615;
+}
+
+.world-icon{
+font-size:40px;
+margin-bottom:30px;
+}
+
+.world h3{
+font-size:21px;
+}
+
+.world p{
+color:#77778c;
+font-size:13px;
+margin-top:7px;
+}
+
+.enter{
+position:absolute;
+bottom:22px;
+color:#a99aff;
+font-size:13px;
+}
+
+/* JOURNEY */
+
+.journey{
+padding:90px 0;
+}
+
+.journey-map{
+display:flex;
+align-items:center;
+justify-content:space-between;
+position:relative;
+margin-top:55px;
+}
+
+.journey-map:before{
+content:"";
+height:1px;
+background:#ffffff20;
+position:absolute;
+left:7%;
+right:7%;
+top:38px;
+}
+
+.step{
+position:relative;
+z-index:2;
+text-align:center;
+width:130px;
+}
+
+.circle{
+width:76px;
+height:76px;
+margin:auto;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#0e0e1d;
+border:1px solid #ffffff22;
+font-size:24px;
+}
+
+.step:first-child .circle{
+border-color:#9b7cff;
+box-shadow:0 0 35px #8b5cf633;
+}
+
+.step h4{
+margin-top:15px;
+font-size:14px;
+}
+
+.step p{
+font-size:11px;
+color:#68687d;
+margin-top:4px;
+}
+
+/* FEATURE */
+
+.feature{
+padding:80px 0;
+}
+
+.feature-box{
+border:1px solid #ffffff12;
+border-radius:30px;
+padding:45px;
+background:#0b0b17;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+}
+
+.feature-box h2{
+font-size:40px;
+letter-spacing:-2px;
+}
+
+.feature-box p{
+color:#858599;
+line-height:1.7;
+margin-top:15px;
+}
+
+.feature-list{
+display:grid;
+gap:12px;
+}
+
+.feature-item{
+padding:17px;
+border:1px solid #ffffff12;
+border-radius:14px;
+background:#ffffff04;
+}
+
+.feature-item b{
+font-size:14px;
+}
+
+.feature-item span{
+display:block;
+color:#74748a;
+font-size:12px;
+margin-top:4px;
+}
+
+/* CTA */
+
+.cta{
+padding:100px 0;
+text-align:center;
+}
+
+.cta h2{
+font-size:clamp(40px,6vw,65px);
+letter-spacing:-3px;
+}
+
+.cta p{
+color:#7d7d91;
+margin:15px 0 25px;
+}
+
+/* FOOTER */
+
+footer{
+border-top:1px solid #ffffff12;
+padding:30px 0;
+color:#666679;
+font-size:12px;
+}
+
+.footerbox{
+display:flex;
+justify-content:space-between;
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+.navlinks{display:none}
+
+.hero{
+min-height:auto;
+}
+
+.hero-content{
+padding:70px 0 30px;
+}
+
+h1{
+letter-spacing:-3px;
+}
+
+.orbit-area{
+position:relative;
+right:auto;
+top:auto;
+width:340px;
+height:340px;
+margin:20px auto 70px;
+}
+
+.hero{
+display:block;
+}
+
+.exam-worlds{
+grid-template-columns:1fr 1fr;
+}
+
+.feature-box{
+grid-template-columns:1fr;
+padding:28px;
+}
+
+.journey-map{
+overflow-x:auto;
+justify-content:flex-start;
+gap:35px;
+padding-bottom:20px;
+}
+
+.journey-map:before{
+display:none;
+}
+
+.step{
+min-width:110px;
+}
+
+}
+
+@media(max-width:500px){
+
+.container{
+width:92%;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.btn{
+text-align:center;
+}
+
+.exam-worlds{
+grid-template-columns:1fr;
+}
+
+.world{
+height:220px;
+}
+
+.heading h2{
+font-size:32px;
+}
+
+.feature-box h2{
+font-size:30px;
+}
+
+.orbit-area{
+width:290px;
+height:290px;
+}
+
+.planet{
+width:65px;
+height:65px;
+font-size:23px;
+}
+
+.center{
+width:110px;
+height:110px;
+}
+
+.center strong{
+font-size:20px;
+}
+
+.footerbox{
+flex-direction:column;
+gap:8px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="navbox">
+<div class="logo">Exam<b>Junction</b></div>
+
+<div class="navlinks">
+<a href="#exams">Exams</a>
+<a href="#journey">Journey</a>
+<a href="#resources">Resources</a>
+<a href="#start" class="navbtn">Start →</a>
+</div>
+</div>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="tag">THE NEXT GENERATION EXAM PLATFORM</div>
+
+<h1>
+Your Exam Has
+<span class="gradient">A Destination.</span>
+</h1>
+
+<p class="hero-text">
+ExamJunction is a new way to prepare for competitive exams.
+Choose your destination, follow your preparation journey and turn every study session into progress.
+</p>
+
+<div class="hero-buttons">
+<a class="btn mainbtn" href="#exams">Choose Your Exam →</a>
+<a class="btn darkbtn" href="#journey">Explore Journey</a>
+</div>
+
+</div>
+
+
+<div class="orbit-area">
+
+<div class="orbit">
+<div class="planet p1">🚆</div>
+<div class="planet p2">📋</div>
+</div>
+
+<div class="orbit two">
+<div class="planet p3">🏦</div>
+<div class="planet p4">🛡️</div>
+</div>
+
+<div class="orbit three"></div>
+
+<div class="center">
+<strong>EJ</strong>
+<small>EXAMJUNCTION</small>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- EXAM DESTINATIONS -->
+
+<section class="destination" id="exams">
+
+<div class="container">
+
+<div class="heading">
+<small>01 / DESTINATIONS</small>
+<h2>Choose Your World.</h2>
+<p>Every exam has a different route. Choose yours.</p>
+</div>
+
+<div class="exam-worlds">
+
+<div class="world">
+<div class="world-icon">🚆</div>
+<h3>Railway</h3>
+<p>NTPC · Group D · ALP</p>
+<div class="enter">Enter Railway →</div>
+</div>
+
+<div class="world">
+<div class="world-icon">📋</div>
+<h3>SSC</h3>
+<p>CGL · CHSL · GD</p>
+<div class="enter">Enter SSC →</div>
+</div>
+
+<div class="world">
+<div class="world-icon">🏦</div>
+<h3>Banking</h3>
+<p>SBI · IBPS · Banking</p>
+<div class="enter">Enter Banking →</div>
+</div>
+
+<div class="world">
+<div class="world-icon">🛡️</div>
+<h3>Defence</h3>
+<p>NDA · Defence Exams</p>
+<div class="enter">Enter Defence →</div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- JOURNEY -->
+
+<section class="journey" id="journey">
+
+<div class="container">
+
+<div class="heading">
+<small>02 / YOUR ROUTE</small>
+<h2>From Zero to Exam Day.</h2>
+<p>A simple preparation journey without the confusion.</p>
+</div>
+
+<div class="journey-map">
+
+<div class="step">
+<div class="circle">01</div>
+<h4>START</h4>
+<p>Know your syllabus</p>
+</div>
+
+<div class="step">
+<div class="circle">02</div>
+<h4>LEARN</h4>
+<p>Build concepts</p>
+</div>
+
+<div class="step">
+<div class="circle">03</div>
+<h4>PRACTICE</h4>
+<p>Solve questions</p>
+</div>
+
+<div class="step">
+<div class="circle">04</div>
+<h4>PYQ</h4>
+<p>Know the pattern</p>
+</div>
+
+<div class="step">
+<div class="circle">05</div>
+<h4>MOCK</h4>
+<p>Test yourself</p>
+</div>
+
+<div class="step">
+<div class="circle">06</div>
+<h4>EXAM</h4>
+<p>Execute</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="feature" id="resources">
+
+<div class="container">
+
+<div class="feature-box">
+
+<div>
+<h2>Everything you need.<br>
+Nothing you don't.</h2>
+
+<p>
+Instead of jumping between dozens of resources,
+ExamJunction brings the important parts of preparation into one focused place.
+</p>
+</div>
+
+<div class="feature-list">
+
+<div class="feature-item">
+<b>🎯 PYQ Intelligence</b>
+<span>Understand what the exam actually asks.</span>
+</div>
+
+<div class="feature-item">
+<b>⚡ Practice Arena</b>
+<span>Questions, speed practice and mock tests.</span>
+</div>
+
+<div class="feature-item">
+<b>📚 Knowledge Vault</b>
+<span>Notes, formulas and revision resources.</span>
+</div>
+
+<div class="feature-item">
+<b>📈 Progress Tracking</b>
+<span>Know what is completed and what remains.</span>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta" id="start">
+
+<div class="container">
+
+<h2>Ready to choose<br>
+<span class="gradient">your destination?</span></h2>
+
+<p>Your preparation starts with one decision.</p>
+
+<a class="btn mainbtn" href="#exams">Start Your Journey →</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="container footerbox">
+
+<div>© 2026 ExamJunction</div>
+<div>Learn · Practice · Progress</div>
+
+</div>
+
+</footer>
+
+</body>
+  </html>
